@@ -272,32 +272,41 @@
 
     <main class="container">
 
-        <section id="pd">
+    <section id="pd">
             <div class="section-header">
                 <div class="header-line"></div>
-                <h2>1. Пассив и ПД Фишинг</h2>
+                <h2>1. Пассив</h2>
             </div>
             <div class="rules-grid">
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Правила ПД Фишинга</div>
-                        <span class="badge-penalty warn">Лимит 2 раза</span>
+                        <div class="card-title">ПД Фишинг и Уклонения</div>
+                        <span class="badge-penalty info">Определение</span>
                     </div>
-                    <div class="card-desc">ПД Фишинг — намеренный уклон от первого взаимодействия. Разрешен <strong>до 2 уклонов</strong> при стаггере или спам-комбо. ПД фиш без ударов соперника запрещен. ПД фиш разрешен, только если стамина слита <strong>полностью</strong>.</div>
+                    <div class="card-desc">
+                        ПД Фишинг — намеренный отказ от атак/взаимодействия ради идеального уклонения. Разрешено выждать момент и сделать <strong>два уклона</strong> при лопле на стагеринге или спамящих комбо (особенно против медленных стилей). Пдфишить разрешено, только когда стамина закончилась <strong>ПОЛНОСТЬЮ</strong>.
+                    </div>
                 </div>
+
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Таймер 2.5 сек и Dempsey</div>
-                        <span class="badge-penalty warn">Фол</span>
+                        <div class="card-title">Таймер 2,5 секунды и Демпси</div>
+                        <span class="badge-penalty warn">Предупреждение ➔ Фол</span>
                     </div>
-                    <div class="card-desc">Максимум ожидания — <strong>2.5 сек</strong> (включая Dempsey Roll). Намерение жонглировать/фишить первым 2+ раза при таймере = <strong>фол</strong>. Эмоции засчитываются как бездействие.</div>
+                    <div class="card-desc">
+                        Ждать удара можно максимум <strong>2,5 секунды</strong> (включая демпси ролл). Случайный выход за таймер — предупреждение, злоупотребление — <strong>фол</strong>. Первым ждать удар и пдфишить больше двух раз в рамках 2,5 сек — <strong>фол</strong>. Эмоции (кроме начала раунда) = бездействие.
+                    </div>
                 </div>
+
                 <div class="rule-card danger-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Сброс таймера и Ульта</div>
-                        <span class="badge-penalty danger">Фол / Дисквалификация</span>
+                        <div class="card-title">Сброс таймера и Пассив под Ульту</div>
+                        <span class="badge-penalty danger">2 Фола</span>
                     </div>
-                    <div class="card-desc">Удар, получение каунтера или скилл нейтрала <strong>сбрасывают 2.5s таймер</strong>. Пассив или ПД-фиш ради набивания ульта в конце боя = <strong>1 фол</strong>. <strong>3 фола = Дисквалификация (DQ)</strong>.</div>
+                    <div class="card-desc">
+                        Таймер 2,5 сек сбрасывается при: попытке удара, получении контрудара, атаках и способностях, возвращающих на нейтральное положение.<br><br>
+                        Пассив или пдфиш в конце боя ради нанесения ульты = <strong>2 фола</strong>.
+                    </div>
                 </div>
             </div>
         </section>
