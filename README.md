@@ -1,4 +1,3 @@
-
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +13,6 @@
             --red: #ff2a4b;
             --red-glow: rgba(255, 42, 75, 0.5);
             --cyan: #00f2fe;
-            --cyan-glow: rgba(0, 242, 254, 0.5);
             --text-main: #f0f4f8;
             --text-sub: #94a3b8;
             --border-grid: rgba(255, 183, 3, 0.15);
@@ -37,7 +35,6 @@
             background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
         }
 
-        /* Top Progress Bar */
         #progress-bar {
             position: fixed; top: 0; left: 0; height: 3px;
             background: linear-gradient(90deg, var(--red), var(--gold), var(--cyan));
@@ -45,7 +42,6 @@
             box-shadow: 0 0 12px var(--gold);
         }
 
-        /* Preloader */
         #loader {
             position: fixed; inset: 0; background: #020203;
             z-index: 99999; display: flex; flex-direction: column;
@@ -65,7 +61,6 @@
             text-shadow: 0 0 15px var(--gold-glow);
         }
 
-        /* Dynamic Ticker */
         .marquee-wrapper {
             background: linear-gradient(90deg, #111, var(--red), var(--gold), #111);
             color: #fff; font-weight: 900; font-size: 0.75rem;
@@ -76,7 +71,6 @@
         .marquee-content { display: inline-block; animation: marquee 18s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
 
-        /* Status Radar */
         .status-container { display: flex; justify-content: center; margin-top: 20px; }
         .status-badge {
             display: flex; align-items: center; gap: 10px;
@@ -88,7 +82,6 @@
         .radar-dot.open { background: #00e676; box-shadow: 0 0 12px #00e676; }
         .radar-dot.closed { background: var(--red); box-shadow: 0 0 12px var(--red); }
 
-        /* Header */
         header { text-align: center; padding: 20px 15px; }
         .main-badge {
             display: inline-block; background: linear-gradient(45deg, var(--red), #ff5252); color: #fff;
@@ -103,7 +96,6 @@
         }
         h1 span { color: var(--gold); text-shadow: 0 0 20px var(--gold-glow); }
 
-        /* Search Input */
         .search-wrapper { width: 100%; max-width: 650px; margin: 20px auto 0; padding: 0 10px; }
         .search-input {
             width: 100%; background: rgba(15, 18, 32, 0.9);
@@ -114,7 +106,6 @@
         }
         .search-input:focus { border-color: var(--gold); box-shadow: 0 0 25px var(--gold-glow); }
 
-        /* Nav Horizontal Scroller */
         .nav-scroller {
             display: flex; gap: 10px; overflow-x: auto;
             padding: 20px 10px 10px; scrollbar-width: none;
@@ -129,7 +120,6 @@
         }
         .nav-link:hover { border-color: var(--gold); color: #fff; transform: translateY(-2deg); }
 
-        /* Main Container & Sections */
         .container { width: 100%; max-width: 1250px; margin: 30px auto; padding: 0 15px; }
         section { margin-bottom: 45px; }
 
@@ -147,9 +137,8 @@
             box-shadow: 0 0 12px var(--gold-glow); border-radius: 2px;
         }
 
-        /* Cards Grid */
         .rules-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
         }
         .rule-card {
@@ -186,7 +175,6 @@
         .card-desc { color: var(--text-sub); font-size: 0.92rem; }
         .card-desc strong { color: #fff; }
 
-        /* Ban List */
         .bans-flex {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px;
         }
@@ -197,7 +185,6 @@
         }
         .ban-box:hover { background: rgba(255, 42, 75, 0.2); transform: scale(1.03); }
 
-        /* Notification Toast */
         #toast {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
             background: var(--gold); color: #000; padding: 10px 24px; border-radius: 30px;
@@ -206,7 +193,6 @@
         }
         #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        /* Scroll Top Button */
         #scrollTop {
             position: fixed; bottom: 25px; right: 25px;
             width: 48px; height: 48px; background: var(--gold);
@@ -236,7 +222,7 @@
 
     <div class="marquee-wrapper">
         <div class="marquee-content">
-            ⚡ U.C.L OFFICIAL CHAMPIONSHIP RULES • 3 ФОЛА = ДИСКВАЛИФИКАЦИЯ • СОБЛЮДАЙТЕ РЕГЛАМЕНТ LIGA U.C.L • ⚡
+            ⚡ ПРАВИЛА БОЁВ U.C.L • ОФИЦИАЛЬНЫЙ РЕГЛАМЕНТ • СОБЛЮДАЙТЕ ПРАВИЛА ЛИГИ • ⚡
         </div>
     </div>
 
@@ -250,29 +236,29 @@
 
         <div style="margin-top:20px;">
             <div class="main-badge">Ultimate Championship League</div>
-            <h1>Официальный Регламент <span>U.C.L</span></h1>
+            <h1>Правила боёв <span>U.C.L</span></h1>
         </div>
 
         <div class="search-wrapper">
-            <input type="text" id="searchInput" class="search-input" placeholder="⚡ Поиск правил (фол, ПД, слоу клик...)" oninput="searchRules()">
+            <input type="text" id="searchInput" class="search-input" placeholder="⚡ Поиск правил (пассив, демпси, багоюз, бекдеш...)" oninput="searchRules()">
         </div>
 
         <div class="nav-scroller">
-            <a href="#pd" class="nav-link">1. Пассив / ПД</a>
+            <a href="#pd" class="nav-link">1. Пассив</a>
             <a href="#bugs" class="nav-link">2. Багоюз</a>
-            <a href="#combos" class="nav-link">3. Слоу клики</a>
-            <a href="#skating" class="nav-link">4. С-кейтинг</a>
-            <a href="#dd" class="nav-link">5. Дабл деш</a>
-            <a href="#audio" class="nav-link">6. Звуки / Медиа</a>
+            <a href="#combos" class="nav-link">3. Медленные комбо М1</a>
+            <a href="#skating" class="nav-link">4. С-кейтинг и бекдеши</a>
+            <a href="#dd" class="nav-link">5. ДД (дабл деш)</a>
+            <a href="#audio" class="nav-link">6. Звуки / Изображения</a>
             <a href="#title" class="nav-link">7. Титульные бои</a>
-            <a href="#combat" class="nav-link">8. Регламент</a>
+            <a href="#combat" class="nav-link">8. Регламент боев</a>
             <a href="#bans" class="nav-link">9. Бан стили</a>
         </div>
     </header>
 
     <main class="container">
 
-    <section id="pd">
+        <section id="pd">
             <div class="section-header">
                 <div class="header-line"></div>
                 <h2>1. Пассив</h2>
@@ -280,32 +266,36 @@
             <div class="rules-grid">
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">ПД Фишинг и Уклонения</div>
+                        <div class="card-title">ПД Фишинг</div>
                         <span class="badge-penalty info">Определение</span>
                     </div>
                     <div class="card-desc">
-                        ПД Фишинг — намеренный отказ от атак/взаимодействия ради идеального уклонения. Разрешено выждать момент и сделать <strong>два уклона</strong> при лопле на стагеринге или спамящих комбо (особенно против медленных стилей). Пдфишить разрешено, только когда стамина закончилась <strong>ПОЛНОСТЬЮ</strong>.
+                        ПД Фишинг— это когда игрок намеренно перестает бить/взаимодействовать, чтобы сделать идеальное уклонение.<br><br>
+                        Если вас ловят на стагеринге или вы ничего не можете сделать кроме уклона то можете выждать момент и сделать два уклона если по вам делают спамящие комбо (особенно касается медленных стилей).
                     </div>
                 </div>
 
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Таймер 2,5 секунды и Демпси</div>
-                        <span class="badge-penalty warn">Предупреждение ➔ Фол</span>
+                        <div class="card-title">Таймеры и Ограничения</div>
+                        <span class="badge-penalty warn">Предупреждение / Фол</span>
                     </div>
                     <div class="card-desc">
-                        Ждать удара можно максимум <strong>2,5 секунды</strong> (включая демпси ролл). Случайный выход за таймер — предупреждение, злоупотребление — <strong>фол</strong>. Первым ждать удар и пдфишить больше двух раз в рамках 2,5 сек — <strong>фол</strong>. Эмоции (кроме начала раунда) = бездействие.
+                        Ждать удара можно максимум <strong>2,5 секунды</strong>, вы можете случайно выйти за рамки времени и будет только предупреждение, но если вы злоупотребляете этим то получите фол. Это касается и демпси ролла - вы не можете злоупотреблять им больше чем <strong>2,5 секунды</strong>.<br><br>
+                        Если вы первым ждёте удар и пдфишите, больше двух раз, даже если делаете это в таймер пдфиша (2.5 секунды) то даётся фол.
                     </div>
                 </div>
 
                 <div class="rule-card danger-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Сброс таймера и Пассив под Ульту</div>
+                        <div class="card-title">Сброс таймера, Эмоции и Стамина</div>
                         <span class="badge-penalty danger">2 Фола</span>
                     </div>
                     <div class="card-desc">
-                        Таймер 2,5 сек сбрасывается при: попытке удара, получении контрудара, атаках и способностях, возвращающих на нейтральное положение.<br><br>
-                        Пассив или пдфиш в конце боя ради нанесения ульты = <strong>2 фола</strong>.
+                        Попытка удара и получение контрудара сбрасывают таймер порога ПД фиша (таймер 2,5 секунды). Также атака и способности которые возвращают бойцов на нейтральное положение тоже сбрасывает таймер.<br><br>
+                        Использование эмоций будет приравниваться к бездействию. ( кроме начала раунда ).<br><br>
+                        Если вы пассивите или пдфишите в конце боя чтобы нанести ульту это приравнивается как <strong>два фола</strong>.<br><br>
+                        Пдфишить можно когда у бойца закончилась стамина <strong>ПОЛНОСТЬЮ</strong>.
                     </div>
                 </div>
             </div>
@@ -314,22 +304,38 @@
         <section id="bugs">
             <div class="section-header">
                 <div class="header-line"></div>
-                <h2>2. Запрещенный Багоюз</h2>
+                <h2>2. Багоюз</h2>
             </div>
             <div class="rules-grid">
                 <div class="rule-card danger-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
                         <div class="card-title">Парирование ульты</div>
-                        <span class="badge-penalty danger">1 Фол</span>
+                        <span class="badge-penalty danger">Вылет из реальной жизни</span>
                     </div>
-                    <div class="card-desc">Намеренный блок в тайминг при полете ульта, сжигающий ультимейт соперника без урона. Наказание: <strong>1 фол</strong>.</div>
+                    <div class="card-desc">
+                        Когда в вас летит ульта и вас должны пробить и вы в тайминг прожимаете блок и ульта сжирается (если сделаете это намеренно будет вылет из реальной жизни).
+                    </div>
                 </div>
+
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
                         <div class="card-title">Нелегальный стаггеринг</div>
-                        <span class="badge-penalty warn">Предупреждение / Фол</span>
+                        <span class="badge-penalty warn">Предупреждение ➔ Фол</span>
                     </div>
-                    <div class="card-desc">Задержка M1 в серии, при которой удар притягивает соперника и становится неуклоняемым. Наказание: <strong>предупреждение ➔ фол</strong>. Обычный стаггеринг (смена темпа/миксапы) <strong>разрешен</strong>.</div>
+                    <div class="card-desc">
+                        Это когда удар M1 все еще регистрируется в серии, но задерживается и становится неуклоняемым, а также притягивает игрока обратно, несмотря на уклонение и срабатывание кадров, будет считаться нарушением.<br><br>
+                        Первое нарушение за нелегальный стаггеринг влечет за собой устное предупреждение. Последующие нарушения приведут к фолу.
+                    </div>
+                </div>
+
+                <div class="rule-card searchable" onclick="copyCardText(this)">
+                    <div class="card-top">
+                        <div class="card-title">Разрешенный стаггеринг</div>
+                        <span class="badge-penalty info">Разрешено</span>
+                    </div>
+                    <div class="card-desc">
+                        Стаггеринг (тыкать М1 когда хочешь перебить атаку противника) с целью смены темпа или миксапов разрешен .
+                    </div>
                 </div>
             </div>
         </section>
@@ -337,22 +343,28 @@
         <section id="combos">
             <div class="section-header">
                 <div class="header-line"></div>
-                <h2>3. Медленные комбо M1 (Слоу клики)</h2>
+                <h2>3. Медленные комбо М1 (слоу клики)</h2>
             </div>
             <div class="rules-grid">
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Лимиты M1 Слоу Кликов</div>
-                        <span class="badge-penalty warn">Фол при превышении</span>
+                        <div class="card-title">Правила применения</div>
+                        <span class="badge-penalty warn">Фол при нарушении</span>
                     </div>
-                    <div class="card-desc">Разрешено <strong>1 серия после навыка</strong> (1-3 клика) и <strong>до 2 серий после ульта</strong>. Любое превышение — <strong>фол</strong>.</div>
+                    <div class="card-desc">
+                        Медленные удары M1 разрешены только после того, как игрок попал под ультимейт. Медленные M1 нельзя использовать после способностей (например, Focus, Stampede и т. д.). Игрокам разрешено использовать медленные M1 только для <strong>ОДНОЙ СЕРИИ УДАРОВ</strong> большее количество приведет к фолу.
+                    </div>
                 </div>
+
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Особые Стили и Исключения</div>
-                        <span class="badge-penalty info">Ограничения</span>
+                        <div class="card-title">Исключения для стилей</div>
+                        <span class="badge-penalty info">Исключения</span>
                     </div>
-                    <div class="card-desc">Стилю <strong>Крюк</strong> слоу клики <strong>полностью запрещены</strong>. <strong>Iron Fist</strong> разрешена только <strong>1 серия после навыка</strong>.</div>
+                    <div class="card-desc">
+                        <strong>ИСКЛЮЧЕНИЕ:</strong> нельзя использовать стилю крюк слоу клики после ультимейта.<br><br>
+                        После ультимейта айрон фиста можно делать <strong>ДВА КОМБО СЛОУ КЛИКА</strong>.
+                    </div>
                 </div>
             </div>
         </section>
@@ -365,17 +377,33 @@
             <div class="rules-grid">
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Уход назад и Пропуски</div>
+                        <div class="card-title">С-кейтинг</div>
                         <span class="badge-penalty warn">Фол</span>
                     </div>
-                    <div class="card-desc">С-кейтинг (кнопка S) разрешен после успешного попадания. Уход назад с пропуском 2 действий соперника — <strong>фол</strong> (аналогично для бекдеша).</div>
+                    <div class="card-desc">
+                        С-кейтинг - уход назад от противника зажатие кнопки S ( направление джойстика назад ). Можно использовать после попадания удара или комбо по сопернику, если вы идёте назад и ничего не делаете пропуская два действия противника - фол. Также и с бекдешом.
+                    </div>
                 </div>
+
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Против Dempsey и Shotgun</div>
-                        <span class="badge-penalty warn">Фол обоим при затяжке</span>
+                        <div class="card-title">Обоюдный кайтанг</div>
+                        <span class="badge-penalty warn">Фол обоим</span>
                     </div>
-                    <div class="card-desc">Против <strong>Dempsey Roll</strong> C-кейт <strong>строго запрещен</strong>. Против Shotgun разрешен бекдеш на скилл при пред-бекдеше. Обоюдный кайт включает 3-секундный отсчет после 2.5с ПД — фол обоим.</div>
+                    <div class="card-desc">
+                        Если оба игрока намеренно держатся на расстоянии, включается 3 секундный счёт после 2,5 секундного счёта порога ПД, ЕСЛИ никто из игроков не приближается обоим - фол.
+                    </div>
+                </div>
+
+                <div class="rule-card searchable" onclick="copyCardText(this)">
+                    <div class="card-top">
+                        <div class="card-title">Против Демпси и Шотгана</div>
+                        <span class="badge-penalty info">Особые условия</span>
+                    </div>
+                    <div class="card-desc">
+                        Против демпси можно фишить но нельзя уходить назад ( С-кейтить ).<br><br>
+                        Против шотгана можно использовать бекдеш на способность если вы до этого сделали бекдеш.
+                    </div>
                 </div>
             </div>
         </section>
@@ -383,22 +411,28 @@
         <section id="dd">
             <div class="section-header">
                 <div class="header-line"></div>
-                <h2>5. Дабл деш (ДД)</h2>
+                <h2>5. ДД (дабл деш)</h2>
             </div>
             <div class="rules-grid">
                 <div class="rule-card danger-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">ДД Спидстеров</div>
+                        <div class="card-title">Дабл деш подряд (спидстеры)</div>
                         <span class="badge-penalty danger">Запрещено (Фол)</span>
                     </div>
-                    <div class="card-desc">Дабл деш подряд у спидстеров для уклона от финтов — <strong>запрещен (фол)</strong>.</div>
+                    <div class="card-desc">
+                        Дабл деш подряд (для спидстеров) - который используется для уклона от финтов, он запрещён даётся фол за него.
+                    </div>
                 </div>
+
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
                         <div class="card-title">Правила Дешей</div>
-                        <span class="badge-penalty info">Правило 2 атак</span>
+                        <span class="badge-penalty info">Разрешено / Запрещено</span>
                     </div>
-                    <div class="card-desc">Два деша подряд официально разрешены <strong>только после 2 атак</strong>. <strong>Трипл деш полностью запрещен</strong>.</div>
+                    <div class="card-desc">
+                        Второе понятие: два деша после двух атак разрешён.<br><br>
+                        Трипл деш запрещён.
+                    </div>
                 </div>
             </div>
         </section>
@@ -406,22 +440,38 @@
         <section id="audio">
             <div class="section-header">
                 <div class="header-line"></div>
-                <h2>6. Звуки и Картинки</h2>
+                <h2>6. Пользовательские звуки / изображения</h2>
             </div>
             <div class="rules-grid">
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Звуки Perfect Dodge</div>
-                        <span class="badge-penalty warn">Ограничения</span>
+                        <div class="card-title">Общие правила</div>
+                        <span class="badge-penalty warn">Предупреждение</span>
                     </div>
-                    <div class="card-desc">ПД звуки разрешены, но рефери вправе потребовать их отключить при создании помех сопернику.</div>
+                    <div class="card-desc">
+                        Использование неприятных или раздражающих звуковых эффектов и изображений может отвлекать игроков во время игры. Ниже приведены правила, касающиеся пользовательских звуковых эффектов и изображений; несоблюдение этих правил приведет к предупреждению.
+                    </div>
                 </div>
+
+                <div class="rule-card searchable" onclick="copyCardText(this)">
+                    <div class="card-top">
+                        <div class="card-title">Звуки ПД (Идеальное уклонение)</div>
+                        <span class="badge-penalty info">На усмотрение</span>
+                    </div>
+                    <div class="card-desc">
+                        Пользовательские звуковые эффекты идеального уклонения (ПД) остаются на усмотрение игроков, но может быть запрошено их удаление, чтобы избежать несправедливого преимущества из-за отвлечения внимания.
+                    </div>
+                </div>
+
                 <div class="rule-card danger-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Каунтеры и Ультимейты</div>
-                        <span class="badge-penalty danger">Строгий Бан</span>
+                        <div class="card-title">Контрудары и Ульта</div>
+                        <span class="badge-penalty danger">Строго запрещено / Разрешено</span>
                     </div>
-                    <div class="card-desc">Звуки каунтеров и сторонние картинки — <strong>строго запрещены</strong>. Звуки и картинки для <strong>ультимейтов разрешены</strong>.</div>
+                    <div class="card-desc">
+                        Пользовательские звуковые эффекты контрударов (каунтер), а также изображения строго запрещены и должны быть удалены для официальных матчей.<br><br>
+                        Пользовательские звуковые эффекты и изображения ультимативных способностей (ульта) разрешены.
+                    </div>
                 </div>
             </div>
         </section>
@@ -429,25 +479,30 @@
         <section id="title">
             <div class="section-header">
                 <div class="header-line"></div>
-                <h2>7. Титульные Бои</h2>
+                <h2>7. Титульные бои</h2>
             </div>
             <div class="rules-grid">
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Формат Bo3 и Оценивание</div>
-                        <span class="badge-penalty info">Bo3</span>
-                    </div>
-                    <div class="card-desc">Формат Bo3 (до 2 побед). Смена стиля — только после поражения. Бой судят 3 рефери (макс 10 баллов). За пассивную победу с минимальным отрывом очки могут быть отданы сопернику.</div>
-                </div>
-                <div class="rule-card searchable" onclick="copyCardText(this)">
-                    <div class="card-top">
-                        <div class="card-title">Сроки защиты поясов</div>
-                        <span class="badge-penalty info">График</span>
+                        <div class="card-title">Формат боев и оценивание</div>
+                        <span class="badge-penalty info">Формат bo3</span>
                     </div>
                     <div class="card-desc">
-                        • <strong>UNF:</strong> Защита каждую неделю<br>
-                        • <strong>UNC:</strong> Защита каждые 2 недели<br>
-                        • <strong>UCL:</strong> Защита каждые 2.5 недели
+                        Проводятся в формате бо3 ( 3 боя ). Игрок может сменить стиль только после поражения; победитель должен сохранять текущий стиль до проигрыша. Правила такие же как и в обычных боях.<br><br>
+                        За боем будут наблюдать три рефери высшей категории которые будут давать оценки за бой.<br><br>
+                        Максимальный балл 10 очков по системе оценивания рефери, если вы играли пассивно и выиграли с небольшим отрывом, но набрали очков меньше чем противник, то рефери могут отдать победу ему.
+                    </div>
+                </div>
+
+                <div class="rule-card searchable" onclick="copyCardText(this)">
+                    <div class="card-top">
+                        <div class="card-title">Защита титулов</div>
+                        <span class="badge-penalty info">Сроки защиты</span>
+                    </div>
+                    <div class="card-desc">
+                        • <strong>ЗАЩИТА ТИТУЛА ЧЕМПИОНА В UNF:</strong> КАЖДАЯ НЕДЕЛЯ<br><br>
+                        • <strong>ЗАЩИТА ТИТУЛА ЧЕМПИОНА UNC:</strong> КАЖДЫЕ 2 НЕДЕЛИ<br><br>
+                        • <strong>ЗАЩИТА ТИТУЛА ЧЕМПИОНА UCL:</strong> КАЖДЫЕ 2.5 НЕДЕЛИ
                     </div>
                 </div>
             </div>
@@ -456,22 +511,57 @@
         <section id="combat">
             <div class="section-header">
                 <div class="header-line"></div>
-                <h2>8. Общий Регламент</h2>
+                <h2>8. Правила проведения боев U.C.L</h2>
             </div>
             <div class="rules-grid">
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Вылеты и Судейство</div>
-                        <span class="badge-penalty warn">5 минут / 3 фола</span>
+                        <div class="card-title">Проблемы со связью и вылеты</div>
+                        <span class="badge-penalty warn">5 минут дедлайн</span>
                     </div>
-                    <div class="card-desc">При вылете дается <strong>5 минут</strong> на возврат. Нарушения: 2 фола = 1 варн, 2 варна = Поражение/DQ (3 фола = DQ). Решение рефери во время боя окончательно.</div>
+                    <div class="card-desc">
+                        Если прямо посреди матча у вас оборвалось соединение или вылетела игра, включается счетчик: у вас есть ровно 5 минут на немедленное возвращение. Если не уложитесь в этот дедлайн - поединок либо полностью аннулируется, либо вам присуждается технический нокаут (ТКО) по решению рефери.
+                    </div>
                 </div>
+
                 <div class="rule-card searchable" onclick="copyCardText(this)">
                     <div class="card-top">
-                        <div class="card-title">Лимиты и Продвижение</div>
-                        <span class="badge-penalty warn">Макс 3 боя в день</span>
+                        <div class="card-title">Неоспоримый авторитет рефери</div>
+                        <span class="badge-penalty info">Закон на ринге</span>
                     </div>
-                    <div class="card-desc">Лимит: <strong>макс 3 боя в сутки</strong>. Вызов чемпиону бросают бойцы из <strong>Топ-5</strong>. <strong>Топ-1</strong> получает обязательный бой. Возможен принудительный перевод выше за доминирование.</div>
+                    <div class="card-desc">
+                        Вердикт судьи на ринге - это закон, который не обсуждается во время боя. Однако, если рефери допустил явную и грубую ошибку, это не сойдет ему с рук - после проверки такое судейство будет жестко караться.
+                    </div>
+                </div>
+
+                <div class="rule-card searchable" onclick="copyCardText(this)">
+                    <div class="card-top">
+                        <div class="card-title">Суточный лимит на поединки</div>
+                        <span class="badge-penalty warn">Макс 3 боя</span>
+                    </div>
+                    <div class="card-desc">
+                        Не стоит перегорать на ринге. Введено строгое ограничение: один боец имеет право провести не более 3 боев за одни сутки.
+                    </div>
+                </div>
+
+                <div class="rule-card searchable" onclick="copyCardText(this)">
+                    <div class="card-top">
+                        <div class="card-title">Смена дивизионов и путевка наверх</div>
+                        <span class="badge-penalty info">Продвижение</span>
+                    </div>
+                    <div class="card-desc">
+                        Если вы буквально аннигилируете своих соперников без шансов, администрация может принудительно перевести вас в более высокий рейтинг за слишком явное доминирование. В обычном же порядке, чтобы легально перейти в другую лигу, вам необходимо сначала завоевать чемпионский пояс текущего рейтинга и провести как минимум одну успешную защиту.
+                    </div>
+                </div>
+
+                <div class="rule-card searchable" onclick="copyCardText(this)">
+                    <div class="card-top">
+                        <div class="card-title">Право на вызов чемпиона</div>
+                        <span class="badge-penalty info">Топ-5 / Топ-1</span>
+                    </div>
+                    <div class="card-desc">
+                        Покушаться на пояс короля имеют право далеко не все - бросить вызов действующему чемпиону могут только бойцы из первой пятерки (Топ-5) рейтинга. При этом первый номер таблицы (Топ-1) обладает эксклюзивной привилегией: чемпион обязан принять его вызов безоговорочно!
+                    </div>
                 </div>
             </div>
         </section>
@@ -479,22 +569,22 @@
         <section id="bans">
             <div class="section-header">
                 <div class="header-line"></div>
-                <h2>9. Запрещенные Стили (Banned)</h2>
+                <h2>9. Бан стили</h2>
             </div>
             <div class="bans-flex">
-                <div class="ban-box searchable">Slugger</div>
-                <div class="ban-box searchable">Hawk</div>
-                <div class="ban-box searchable">Hammer</div>
-                <div class="ban-box searchable">Dragon Fish</div>
-                <div class="ban-box searchable">White Ash</div>
-                <div class="ban-box searchable">Wolf</div>
-                <div class="ban-box searchable">Hitman</div>
-                <div class="ban-box searchable">Shotgun</div>
-                <div class="ban-box searchable">Corkscrew</div>
-                <div class="ban-box searchable">Chronos</div>
-                <div class="ban-box searchable">Iron Fist (Restricted)</div>
-                <div class="ban-box searchable">All Shinies</div>
-                <div class="ban-box searchable">Custom / Unique / Exclusive</div>
+                <div class="ban-box searchable">slugger</div>
+                <div class="ban-box searchable">hawk</div>
+                <div class="ban-box searchable">hammer</div>
+                <div class="ban-box searchable">dragonfish</div>
+                <div class="ban-box searchable">white ash</div>
+                <div class="ban-box searchable">wolf</div>
+                <div class="ban-box searchable">hitman</div>
+                <div class="ban-box searchable">shotgun</div>
+                <div class="ban-box searchable">corkscrew</div>
+                <div class="ban-box searchable">bullet</div>
+                <div class="ban-box searchable">chronos</div>
+                <div class="ban-box searchable">all shinies</div>
+                <div class="ban-box searchable">exclusive styles</div>
             </div>
         </section>
 
@@ -507,14 +597,12 @@
     </footer>
 
     <script>
-        // Smooth Preloader Hide
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             loader.style.opacity = '0';
             setTimeout(() => loader.style.visibility = 'hidden', 400);
         });
 
-        // Arena Status Radar (MSK Time)
         function checkArenaStatus() {
             const now = new Date();
             const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
@@ -537,7 +625,6 @@
         checkArenaStatus();
         setInterval(checkArenaStatus, 30000);
 
-        // Advanced Live Search
         function searchRules() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const items = document.querySelectorAll('.searchable');
@@ -552,10 +639,9 @@
             });
         }
 
-        // Copy Card Text Action
         function copyCardText(card) {
-            const title = card.querySelector('.card-title').innerText;
-            const desc = card.querySelector('.card-desc').innerText;
+            const title = card.querySelector('.card-title') ? card.querySelector('.card-title').innerText : 'Бан стиль';
+            const desc = card.querySelector('.card-desc') ? card.querySelector('.card-desc').innerText : card.innerText;
             const textToCopy = `📌 [U.C.L Rule] ${title}: ${desc}`;
             
             navigator.clipboard.writeText(textToCopy).then(() => {
@@ -565,7 +651,6 @@
             });
         }
 
-        // Scroll Progress & Scroll To Top Button
         window.onscroll = () => {
             const winScroll = document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
