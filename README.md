@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -42,23 +43,71 @@
             box-shadow: 0 0 12px var(--gold);
         }
 
+        /* 5-секундный прелоадер с анимацией перчаток и груши */
         #loader {
             position: fixed; inset: 0; background: #020203;
             z-index: 99999; display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            transition: opacity 0.4s ease, visibility 0.4s;
+            transition: opacity 0.5s ease, visibility 0.5s;
         }
-        .boxing-glove-icon {
-            font-size: 4rem; animation: punch 0.5s infinite alternate cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        .punch-stage {
+            position: relative; width: 220px; height: 160px;
+            display: flex; align-items: center; justify-content: center;
         }
-        @keyframes punch {
-            0% { transform: scale(0.85) rotate(-10deg); filter: drop-shadow(0 0 10px var(--red)); }
-            100% { transform: scale(1.15) rotate(15deg); filter: drop-shadow(0 0 25px var(--gold)); }
+
+        .heavy-bag {
+            font-size: 4.5rem; position: relative; z-index: 1;
+            transform-origin: top center; animation: bagSwing 0.6s ease-in-out infinite alternate;
         }
+
+        .glove-left, .glove-right {
+            position: absolute; font-size: 3rem; z-index: 2; top: 35px;
+        }
+
+        .glove-left {
+            left: 0; animation: punchLeft 0.6s ease-in-out infinite;
+        }
+
+        .glove-right {
+            right: 0; transform: scaleX(-1); animation: punchRight 0.6s ease-in-out infinite 0.3s;
+        }
+
+        .impact-spark {
+            position: absolute; width: 30px; height: 30px;
+            border-radius: 50%; background: var(--gold);
+            box-shadow: 0 0 25px var(--gold), 0 0 40px var(--red);
+            opacity: 0; z-index: 3; animation: sparkFlash 0.6s infinite;
+        }
+
+        @keyframes bagSwing {
+            0% { transform: rotate(-8deg); }
+            100% { transform: rotate(8deg); }
+        }
+
+        @keyframes punchLeft {
+            0%, 100% { transform: translateX(0) rotate(-10deg); }
+            50% { transform: translateX(55px) rotate(15deg); }
+        }
+
+        @keyframes punchRight {
+            0%, 100% { transform: scaleX(-1) translateX(0) rotate(-10deg); }
+            50% { transform: scaleX(-1) translateX(55px) rotate(15deg); }
+        }
+
+        @keyframes sparkFlash {
+            0%, 40%, 60%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.4); }
+        }
+
         .loader-text {
             font-family: 'Teko', sans-serif; font-size: 2.2rem;
-            letter-spacing: 3px; color: var(--gold); margin-top: 10px;
+            letter-spacing: 3px; color: var(--gold); margin-top: 20px;
             text-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .loader-timer {
+            font-size: 0.9rem; color: var(--text-sub); margin-top: 5px; font-weight: 700;
         }
 
         .marquee-wrapper {
@@ -213,8 +262,14 @@
 <body>
 
     <div id="loader">
-        <div class="boxing-glove-icon">🥊</div>
-        <div class="loader-text">U.C.L ARENA LOADING...</div>
+        <div class="punch-stage">
+            <div class="glove-left">🥊</div>
+            <div class="heavy-bag">🥊</div>
+            <div class="glove-right">🥊</div>
+            <div class="impact-spark"></div>
+        </div>
+        <div class="loader-text">ПОДГОТОВКА АРЕНЫ U.C.L...</div>
+        <div class="loader-timer" id="loadTimer">Загрузка: 5 сек</div>
     </div>
 
     <div id="progress-bar"></div>
@@ -597,11 +652,22 @@
     </footer>
 
     <script>
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => loader.style.visibility = 'hidden', 400);
-        });
+        // Ровно 5 секунд таймер загрузки
+        let timeLeft = 5;
+        const timerElement = document.getElementById('loadTimer');
+        
+        const countdown = setInterval(() => {
+            timeLeft--;
+            if (timeLeft > 0) {
+                timerElement.textContent = `Загрузка: ${timeLeft} сек`;
+            } else {
+                clearInterval(countdown);
+                timerElement.textContent = `Готово!`;
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.visibility = 'hidden', 500);
+            }
+        }, 1000);
 
         function checkArenaStatus() {
             const now = new Date();
