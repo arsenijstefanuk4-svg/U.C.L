@@ -18,6 +18,28 @@
             --border-grid: rgba(255, 183, 3, 0.15);
         }
 
+        /* Динамические темы подсветки */
+        body.theme-gold {
+            --gold: #ffb703;
+            --gold-glow: rgba(255, 183, 3, 0.5);
+            --border-grid: rgba(255, 183, 3, 0.15);
+        }
+        body.theme-cyan {
+            --gold: #00f2fe;
+            --gold-glow: rgba(0, 242, 254, 0.5);
+            --border-grid: rgba(0, 242, 254, 0.15);
+        }
+        body.theme-red {
+            --gold: #ff2a4b;
+            --gold-glow: rgba(255, 42, 75, 0.5);
+            --border-grid: rgba(255, 42, 75, 0.15);
+        }
+        body.theme-purple {
+            --gold: #b5179e;
+            --gold-glow: rgba(181, 23, 158, 0.5);
+            --border-grid: rgba(181, 23, 158, 0.15);
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
@@ -28,7 +50,7 @@
             line-height: 1.5;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(255, 183, 3, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 0%, var(--gold-glow) 0%, transparent 50%),
                 radial-gradient(circle at 100% 100%, rgba(255, 42, 75, 0.1) 0%, transparent 40%),
                 linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
@@ -41,6 +63,27 @@
             width: 0%; z-index: 10000;
             box-shadow: 0 0 12px var(--gold);
         }
+
+        /* Панель настроек кастомизации */
+        .customizer-panel {
+            position: fixed; top: 15px; right: 15px; z-index: 9999;
+            background: rgba(13, 16, 28, 0.9); border: 1px solid var(--border-grid);
+            padding: 8px 14px; border-radius: 12px; backdrop-filter: blur(12px);
+            display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .customizer-panel span { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-sub); }
+        .color-dots { display: flex; gap: 6px; }
+        .dot-btn {
+            width: 18px; height: 18px; border-radius: 50%; border: 2px solid transparent;
+            cursor: pointer; transition: 0.2s;
+        }
+        .dot-btn:hover { transform: scale(1.2); }
+        .dot-btn.active { border-color: #fff; transform: scale(1.1); }
+        .dot-gold { background: #ffb703; }
+        .dot-cyan { background: #00f2fe; }
+        .dot-red { background: #ff2a4b; }
+        .dot-purple { background: #b5179e; }
 
         /* 5-секундный прелоадер */
         #loader {
@@ -164,12 +207,19 @@
             padding: 2px 16px; border-radius: 4px; text-transform: uppercase;
             letter-spacing: 2px; box-shadow: 0 0 15px var(--red-glow);
             transform: skewX(-8deg); margin-bottom: 12px;
+            animation: floatBadge 3s ease-in-out infinite;
         }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: skewX(-8deg) translateY(0); }
+            50% { transform: skewX(-8deg) translateY(-5px); }
+        }
+
         h1 {
             font-family: 'Teko', sans-serif; font-size: 3.5rem;
             line-height: 0.95; text-transform: uppercase; letter-spacing: 2px;
         }
-        h1 span { color: var(--gold); text-shadow: 0 0 20px var(--gold-glow); }
+        h1 span { color: var(--gold); text-shadow: 0 0 20px var(--gold-glow); transition: 0.3s; }
 
         .search-wrapper { width: 100%; max-width: 650px; margin: 20px auto 0; padding: 0 10px; }
         .search-input {
@@ -193,7 +243,7 @@
             font-weight: 700; font-size: 0.8rem; text-decoration: none;
             text-transform: uppercase; transition: 0.2s ease;
         }
-        .nav-link:hover { border-color: var(--gold); color: #fff; transform: translateY(-2deg); }
+        .nav-link:hover { border-color: var(--gold); color: #fff; transform: translateY(-3px) scale(1.02); }
 
         .container { width: 100%; max-width: 1250px; margin: 30px auto; padding: 0 15px; }
         section { margin-bottom: 45px; }
@@ -201,7 +251,7 @@
         .section-header {
             display: flex; align-items: center; gap: 12px;
             margin-bottom: 22px; border-bottom: 2px solid var(--border-grid);
-            padding-bottom: 8px;
+            padding-bottom: 8px; transition: 0.3s;
         }
         .section-header h2 {
             font-family: 'Teko', sans-serif; font-size: 2.3rem;
@@ -210,6 +260,7 @@
         .header-line {
             height: 5px; width: 25px; background: var(--gold);
             box-shadow: 0 0 12px var(--gold-glow); border-radius: 2px;
+            transition: 0.3s;
         }
 
         .rules-grid {
@@ -220,17 +271,18 @@
             background: var(--bg-card); border: 1px solid var(--border-grid);
             border-radius: 16px; padding: 22px; backdrop-filter: blur(16px);
             display: flex; flex-direction: column; justify-content: space-between;
-            transition: all 0.3s ease; cursor: pointer; position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative;
+            animation: cardAppear 0.5s ease backwards;
         }
         .rule-card:hover {
-            transform: translateY(-4deg);
+            transform: translateY(-6px) scale(1.01);
             border-color: var(--gold);
-            box-shadow: 0 8px 25px rgba(255, 183, 3, 0.15);
+            box-shadow: 0 10px 30px var(--gold-glow);
         }
         .rule-card.danger-card { border-color: rgba(255, 42, 75, 0.3); }
         .rule-card.danger-card:hover {
             border-color: var(--red);
-            box-shadow: 0 8px 25px rgba(255, 42, 75, 0.2);
+            box-shadow: 0 10px 30px rgba(255, 42, 75, 0.3);
         }
 
         .card-top {
@@ -256,9 +308,9 @@
         .ban-box {
             background: rgba(255, 42, 75, 0.06); border: 1px solid rgba(255, 42, 75, 0.25);
             border-radius: 10px; padding: 14px 8px; text-align: center;
-            font-weight: 800; color: #ff6b81; font-size: 0.85rem; transition: 0.2s;
+            font-weight: 800; color: #ff6b81; font-size: 0.85rem; transition: 0.3s;
         }
-        .ban-box:hover { background: rgba(255, 42, 75, 0.2); transform: scale(1.03); }
+        .ban-box:hover { background: rgba(255, 42, 75, 0.2); transform: translateY(-4px) scale(1.05); box-shadow: 0 5px 15px rgba(255,42,75,0.3); }
 
         #toast {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
@@ -276,7 +328,7 @@
             font-weight: 900; font-size: 1.3rem; z-index: 999;
             box-shadow: 0 0 20px var(--gold-glow); transition: 0.2s;
         }
-        #scrollTop:hover { transform: scale(1.1); }
+        #scrollTop:hover { transform: scale(1.15) rotate(15deg); }
 
         footer {
             text-align: center; padding: 30px 15px;
@@ -285,7 +337,18 @@
         footer span { color: var(--gold); font-weight: 800; }
     </style>
 </head>
-<body>
+<body class="theme-gold">
+
+    <!-- Панель кастомизации подсветки -->
+    <div class="customizer-panel">
+        <span>Подсветка:</span>
+        <div class="color-dots">
+            <div class="dot-btn dot-gold active" onclick="setTheme('theme-gold', this)" title="Золотой неон"></div>
+            <div class="dot-btn dot-cyan" onclick="setTheme('theme-cyan', this)" title="Киберпанк синий"></div>
+            <div class="dot-btn dot-red" onclick="setTheme('theme-red', this)" title="Кровавый красный"></div>
+            <div class="dot-btn dot-purple" onclick="setTheme('theme-purple', this)" title="Неоновый фиолетовый"></div>
+        </div>
+    </div>
 
     <div id="loader">
         <div class="punch-stage">
@@ -732,6 +795,27 @@
                 setTimeout(() => toast.classList.remove('show'), 2000);
             });
         }
+
+        // Функция переключения цветовых тем (подсветки)
+        function setTheme(themeName, element) {
+            document.body.className = themeName;
+            document.querySelectorAll('.dot-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            localStorage.setItem('ucl_theme', themeName);
+        }
+
+        // Загрузка сохраненной темы
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('ucl_theme');
+            if (savedTheme) {
+                document.body.className = savedTheme;
+                const activeDot = document.querySelector(`[onclick*="${savedTheme}"]`);
+                if (activeDot) {
+                    document.querySelectorAll('.dot-btn').forEach(btn => btn.classList.remove('active'));
+                    activeDot.classList.add('active');
+                }
+            }
+        });
 
         window.onscroll = () => {
             const winScroll = document.documentElement.scrollTop;
